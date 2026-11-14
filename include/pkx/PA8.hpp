@@ -224,7 +224,7 @@ namespace pksm
 
         inline Type type2(void) const override { return PersonalSWSH::type2(formSpecies()); }
 
-        inline u8 genderType(void) const override { return PersonalSWSH::gender(formSpecies()); }
+        inline u8 genderType(void) const override { return PersonalPLA::gender(formSpecies()); }
 
         inline u8 baseFriendship(void) const override
         {
