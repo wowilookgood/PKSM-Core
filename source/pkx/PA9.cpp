@@ -535,12 +535,13 @@ namespace pksm
 
     Gender PA9::gender(void) const
     {
-        return Gender{u8((data[0x22] >> 2) & 0x3)};
+        // Bits 1-2, one lower than PK9: Z-A dropped the flag between the fateful bit and the gender
+        return Gender{u8((data[0x22] >> 1) & 0x3)};
     }
 
     void PA9::gender(Gender v)
     {
-        data[0x22] = (data[0x22] & ~12) | ((u8(v) & 3) << 2);
+        data[0x22] = (data[0x22] & ~6) | ((u8(v) & 3) << 1);
     }
 
     bool PA9::isAlpha(void) const
