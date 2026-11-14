@@ -451,6 +451,16 @@ namespace pksm
         data[0x22] = (data[0x22] & ~12) | ((u8(v) & 3) << 2);
     }
 
+    bool PA8::isAlpha(void) const
+    {
+        return (data[0x16] & 32) != 0;
+    }
+
+    void PA8::isAlpha(bool v)
+    {
+        data[0x16] = (data[0x16] & ~32) | (v ? 32 : 0);
+    }
+
     u16 PA8::alternativeForm(void) const
     {
         return data[0x24];
